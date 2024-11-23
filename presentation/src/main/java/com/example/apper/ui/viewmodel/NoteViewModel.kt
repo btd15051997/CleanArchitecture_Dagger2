@@ -28,15 +28,15 @@ class NoteViewModel @Inject constructor(private val appUseCase: AppUseCase) : Ba
     val statusMessage: LiveData<EventShowMsg<String>>
         get() = _statusMessage
 
-    val listNoteShareIn = appUseCase.getNoteListsUseCase.invoke()
-        .catch {
-            this.emit(emptyList())
-        }.onCompletion { isSuccessfully ->
-            if (isSuccessfully == null)
-                Log.e(TAG, "Success ${Thread.currentThread().name}")
-            else
-                Log.e(TAG, "Failed: $isSuccessfully")
-        }.shareIn(viewModelScope, SharingStarted.WhileSubscribed(5000))
+//    val listNoteShareIn = appUseCase.getNoteListsUseCase.invoke()
+//        .catch {
+//            this.emit(emptyList())
+//        }.onCompletion { isSuccessfully ->
+//            if (isSuccessfully == null)
+//                Log.e(TAG, "Success ${Thread.currentThread().name}")
+//            else
+//                Log.e(TAG, "Failed: $isSuccessfully")
+//        }.shareIn(viewModelScope, SharingStarted.WhileSubscribed(5000))
 
     /** Flow to StateFlow */
     private var _listNoteStateIn = MutableStateFlow<List<Note>>(emptyList())

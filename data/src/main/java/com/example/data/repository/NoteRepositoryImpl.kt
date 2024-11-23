@@ -27,6 +27,15 @@ class NoteRepositoryImpl @Inject constructor(private val noteDao: NoteDao) : Not
             }.flowOn(dispatchersIO)
             .conflate()
 
+    override suspend fun getNotes(): Flow<List<Note>> {
+        return noteDao.getNoteLists().map {
+            it.map { itemNote ->
+                itemNote.toNote()
+            }
+        }.flowOn(dispatchersIO)
+            .conflate()
+    }
+
     override suspend fun insertNote(note: Note) = withContext(dispatchersIO) {
         val noteEntity = NoteEntity.fromNote(note)
         noteDao.insertNote(noteEntity)

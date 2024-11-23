@@ -18,6 +18,11 @@
     <color name="blue2">#00BCD4</color>
     <color name="red">#F44336</color>
 
+    <color name="color_1">#967648</color>
+    <color name="color_2">#FEE79E</color>
+    <color name="background_color_1">#151618</color>
+    <color name="background_color_2">#F01D2022</color>
+
     <integer-array name="itemLayoutColors">
         <item>@color/blue</item>
         <item>@color/purple</item>

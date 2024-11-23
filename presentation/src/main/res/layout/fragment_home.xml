@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
         tools:context=".ui.HomeFragment">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?backgroundColorHeader"
+            app:layout_constraintBottom_toTopOf="@+id/guideLineBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?backgroundColorBody"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideLineBackground" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideLineBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
 
         <TextView
             android:id="@+id/tvItemTitle"
@@ -18,7 +44,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:text="My Notes"
-            android:textColor="@color/black_200"
+            android:textColor="?titleTextColor"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,94 +52,74 @@
 
         <ImageView
             android:id="@+id/btnLogout"
-            android:src="@drawable/ic_baseline_logout_24"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_baseline_logout_24"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            android:id="@+id/layoutEdtSearch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+
+        <ImageView
+            android:id="@+id/imgSearch"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/ic_baseline_search_24"
+            app:layout_constraintBottom_toBottomOf="@+id/edtSearch"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/edtSearch" />
+
+        <EditText
+            android:id="@+id/edtSearch"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvItemTitle">
-
-            <ImageView
-                android:id="@+id/imgSearch"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:src="@drawable/ic_baseline_search_24" />
-
-            <EditText
-                android:id="@+id/edtSearch"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toEndOf="@+id/imgSearch"
-                android:background="@drawable/bg_rounded_corners20"
-                android:gravity="center_vertical"
-                android:hint="Search notes"
-                android:orientation="horizontal"
-                android:paddingStart="20dp"
-                android:singleLine="true"
-                android:textColor="@color/black_200"
-                android:textColorHint="@color/black_200"
-                android:textSize="14sp"
-                android:weightSum="10" />
-        </RelativeLayout>
-
+            android:layout_marginVertical="20dp"
+            android:background="@drawable/bg_rounded_corners20"
+            android:gravity="center_vertical"
+            android:hint="Search notes"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:singleLine="true"
+            android:textColor="?titleTextColor"
+            android:textColorHint="?titleTextColor"
+            android:textSize="14sp"
+            android:weightSum="10"
+            app:layout_constraintBottom_toTopOf="@+id/guideLineBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgSearch"
+            app:layout_constraintTop_toBottomOf="@+id/tvItemTitle" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvNoteHome"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:visibility="visible"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/layoutBottom"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutEdtSearch"
+            app:layout_constraintTop_toBottomOf="@+id/guideLineBackground"
             tools:listitem="@layout/item_note" />
 
         <TextView
             android:id="@+id/tvNoteEmpty"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="No Empty"
             android:textColor="@color/white"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="@+id/layoutBottom"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layoutEdtSearch" />
-
-
-        <LinearLayout
-            android:id="@+id/layoutBottom"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintVertical_bias="1.0">
-
-        </LinearLayout>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideLineBackground" />
 
         <ImageView
             android:id="@+id/btnNavAddNote"
@@ -122,9 +128,9 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/bg_add_button"
             android:src="@drawable/ic_baseline_add_24"
-            app:layout_constraintBottom_toTopOf="@id/layoutBottom"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/layoutBottom" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
