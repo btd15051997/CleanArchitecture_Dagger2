@@ -12,10 +12,8 @@ import com.example.apper.R
 import com.example.apper.databinding.FragmentUpdateBinding
 import com.example.apper.ui.base.BaseFragment
 import com.example.apper.ui.event.EventNote
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-@AndroidEntryPoint
 class UpdateFragment : BaseFragment(R.layout.fragment_update) {
 
     private val mArgs: UpdateFragmentArgs by navArgs()

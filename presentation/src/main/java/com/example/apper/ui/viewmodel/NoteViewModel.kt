@@ -4,19 +4,16 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.apper.ui.event.EventNote
 import com.example.apper.ui.base.BaseViewModel
+import com.example.apper.ui.event.EventNote
 import com.example.apper.ui.event.EventShowMsg
 import com.example.apper.usecase.AppUseCase
 import com.example.apper.utils.Resource
 import com.example.domain.model.Currency
 import com.example.domain.model.Note
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
-import javax.inject.Inject
 
-@HiltViewModel
-class NoteViewModel @Inject constructor(private val appUseCase: AppUseCase) : BaseViewModel() {
+class NoteViewModel(private val appUseCase: AppUseCase) : BaseViewModel() {
 
     private val TAG = NoteViewModel::class.java.simpleName
 

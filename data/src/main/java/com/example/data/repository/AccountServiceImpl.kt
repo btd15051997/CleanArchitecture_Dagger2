@@ -1,20 +1,17 @@
 package com.example.data.repository
 
 import android.util.Log
-import androidx.core.os.trace
 import com.example.domain.model.User
 import com.example.domain.repository.AccountServiceRepository
-import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
-import javax.inject.Inject
 
 
-class AccountServiceImpl @Inject constructor(
+class AccountServiceImpl(
     private val auth: FirebaseAuth, private val firestore: FirebaseFirestore
 ) : AccountServiceRepository {
 
@@ -33,30 +30,34 @@ class AccountServiceImpl @Inject constructor(
             awaitClose { auth.removeAuthStateListener(listener) }
         }
 
-    override suspend fun authenticate(email: String, password: String, isSignInSuccess: (Boolean) -> Unit) {
+    override suspend fun authenticate(
+        email: String,
+        password: String,
+        isSignInSuccess: (Boolean) -> Unit
+    ) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
             Log.d("authenticate", "signInWithEmailAndPassword isSuccess: ${task.isSuccessful}")
             isSignInSuccess.invoke(task.isSuccessful)
         }.await()
     }
 
-    override suspend fun sendRecoveryEmail(email: String) {
-        auth.sendPasswordResetEmail(email).await()
-    }
-
-    override suspend fun createAnonymousAccount() {
-        auth.signInAnonymously().await()
-    }
-
-    override suspend fun linkAccount(email: String, password: String): Unit =
-        trace(LINK_ACCOUNT_TRACE) {
-            val credential = EmailAuthProvider.getCredential(email, password)
-            auth.currentUser!!.linkWithCredential(credential).await()
-        }
-
-    override suspend fun deleteAccount() {
-        auth.currentUser!!.delete().await()
-    }
+//    override suspend fun sendRecoveryEmail(email: String) {
+//        auth.sendPasswordResetEmail(email).await()
+//    }
+//
+//    override suspend fun createAnonymousAccount() {
+//        auth.signInAnonymously().await()
+//    }
+//
+//    override suspend fun linkAccount(email: String, password: String): Unit =
+//        trace(LINK_ACCOUNT_TRACE) {
+//            val credential = EmailAuthProvider.getCredential(email, password)
+//            auth.currentUser!!.linkWithCredential(credential).await()
+//        }
+//
+//    override suspend fun deleteAccount() {
+//        auth.currentUser!!.delete().await()
+//    }
 
     override suspend fun signOut() {
         if (auth.currentUser!!.isAnonymous) {

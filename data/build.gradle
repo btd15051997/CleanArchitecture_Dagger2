@@ -67,10 +67,10 @@ dependencies {
     def moshi_version = "1.13.0"
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
 
-    /** dagger hilt **/
-    def dagger_hilt_version = "2.52"
-    implementation("com.google.dagger:hilt-android:$dagger_hilt_version")
-    kapt("com.google.dagger:hilt-android-compiler:$dagger_hilt_version")
+//    /** dagger hilt **/
+//    def dagger_hilt_version = "2.52"
+//    implementation("com.google.dagger:hilt-android:$dagger_hilt_version")
+//    kapt("com.google.dagger:hilt-android-compiler:$dagger_hilt_version")
 
     /* firebase */
     // Import the BoM for the Firebase platform
@@ -81,4 +81,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation 'com.google.firebase:firebase-database-ktx'
+
+    // Koin for the dependencies injections
+    def koin_version = "3.1.2"
+    implementation "io.insert-koin:koin-core:$koin_version"
+    implementation "io.insert-koin:koin-test:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
 }

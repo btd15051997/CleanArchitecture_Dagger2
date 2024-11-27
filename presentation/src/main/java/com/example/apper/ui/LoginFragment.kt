@@ -9,9 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.apper.R
 import com.example.apper.databinding.FragmentLoginBinding
 import com.example.apper.ui.base.BaseFragment
-import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class LoginFragment : BaseFragment(R.layout.fragment_login) {
 
     private var _binding: FragmentLoginBinding? = null

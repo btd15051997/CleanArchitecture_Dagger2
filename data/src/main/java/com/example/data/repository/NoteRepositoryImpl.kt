@@ -2,19 +2,16 @@ package com.example.data.repository
 
 import com.example.data.datasource.local.NoteDao
 import com.example.data.datasource.local.NoteEntity
-import com.example.data.di.IoDispatcher
 import com.example.domain.model.Note
 import com.example.domain.repository.NoteRepository
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class NoteRepositoryImpl @Inject constructor(private val noteDao: NoteDao) : NoteRepository {
+class NoteRepositoryImpl  constructor(private val noteDao: NoteDao) : NoteRepository {
 
     private val dispatchersIO = Dispatchers.IO
 

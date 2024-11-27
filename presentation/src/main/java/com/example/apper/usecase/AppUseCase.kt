@@ -1,10 +1,17 @@
 package com.example.apper.usecase
 
-import com.example.domain.usecase.*
-import javax.inject.Inject
-import javax.inject.Singleton
+import com.example.domain.usecase.AddItemToFireStoreUseCase
+import com.example.domain.usecase.AddNoteUseCase
+import com.example.domain.usecase.AutheticateUseCase
+import com.example.domain.usecase.DeleteItemToFireStoreUseCase
+import com.example.domain.usecase.DeleteNoteUseCase
+import com.example.domain.usecase.GetCurrencyUseCase
+import com.example.domain.usecase.GetNoteListsUseCase
+import com.example.domain.usecase.GetNoteWithIdUseCase
+import com.example.domain.usecase.SignOutUseCase
+import com.example.domain.usecase.UpdateNoteUseCase
 
-data class AppUseCase @Inject constructor(
+data class AppUseCase(
     val addNoteUseCase: AddNoteUseCase,
     val deleteNoteUseCase: DeleteNoteUseCase,
     val getNoteListsUseCase: GetNoteListsUseCase,

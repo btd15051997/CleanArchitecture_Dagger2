@@ -11,13 +11,8 @@ import com.example.apper.databinding.FragmentAddBinding
 import com.example.apper.ui.base.BaseFragment
 import com.example.apper.ui.common.AppProgressBar
 import com.example.apper.ui.event.EventNote
-import com.example.apper.ui.viewmodel.NoteViewModel
 import com.example.domain.model.Note
-import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
-import javax.inject.Inject
 
-@AndroidEntryPoint
 class AddFragment : BaseFragment(R.layout.fragment_add) {
 
     private var _binding: FragmentAddBinding? = null

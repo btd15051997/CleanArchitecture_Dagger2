@@ -11,7 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class CurrencyRepositoryImpl @Inject constructor(private val apiService: CurrencyApiService) :
+class CurrencyRepositoryImpl constructor(private val apiService: CurrencyApiService) :
     CurrencyRepository {
     override suspend fun getCurrencyFromServer(): Currency = withContext(Dispatchers.IO) {
         apiService.getCurrencyVND(ACCESS_KEY, CURRENCIES, SOURCE, FORMAT).toCurrency()

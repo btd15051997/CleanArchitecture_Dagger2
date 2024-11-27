@@ -3,13 +3,8 @@ package com.example.apper.ui.viewmodel
 import android.util.Log
 import com.example.apper.ui.base.BaseViewModel
 import com.example.apper.usecase.AppUseCase
-import com.example.data.di.IoDispatcher
-import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineDispatcher
-import javax.inject.Inject
 
-@HiltViewModel
-class LoginViewModel @Inject constructor(private val appUseCase: AppUseCase) : BaseViewModel()  {
+class LoginViewModel(private val appUseCase: AppUseCase) : BaseViewModel() {
 
     private val TAG = LoginViewModel::class.java.simpleName
 

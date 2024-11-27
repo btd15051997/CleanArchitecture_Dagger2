@@ -17,14 +17,9 @@ import com.example.apper.adapter.NoteAdapter
 import com.example.apper.databinding.FragmentHomeBinding
 import com.example.apper.ui.base.BaseFragment
 import com.example.apper.ui.event.EventNote
-import com.example.apper.ui.viewmodel.NoteViewModel
 import com.example.domain.model.Note
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-
-@AndroidEntryPoint
 class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
     private var listFilter: List<Note>? = null
